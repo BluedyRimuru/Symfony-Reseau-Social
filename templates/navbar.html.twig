@@ -1,0 +1,48 @@
+<nav>
+    <div class="nav-container">
+        <div class="nav-item">
+            <a href="{{ path('app_accueil') }}">
+                <img src="{{ asset('image/favicon.png') }}" alt="favicon" width="40">
+            </a>
+        </div>
+        <div class="nav-item">
+            <a href="">Connexion</a>
+            <a href="">Inscription</a>
+            <a href="">En savoir plus</a>
+        </div>
+        <div class="nav-item">
+            <a href="">
+                <img src="{{ asset('image/github_icon.png') }}" alt="github_icon" width="40">
+            </a>
+            <a href="">
+                <img src="{{ asset('image/twitter_icon.png') }}" alt="twitter_icon" width="40">
+            </a>
+            <a href="">
+                <img src="{{ asset('image/youtube_icon.png') }}" alt="youtube_icon" width="40">
+            </a>
+        </div>
+    </div>
+</nav>
+<style>
+    .nav-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 64px;
+        background: rgb(248,248,248);
+        background: linear-gradient(266deg, rgba(248,248,248,1) 0%, rgba(198,79,99,1) 100%);
+        {#background-image: url("{{ asset('image/791928.png') }}");#}
+    }
+    .nav-item {
+        margin-right: 30px;
+        margin-left: 30px;
+    }
+    .nav-item a {
+        /*color: #76B4FF;*/
+        color: white;
+        padding: 10px;
+        text-decoration: none;
+        font-size: 25px;
+    }
+</style>
