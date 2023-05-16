@@ -5,3 +5,16 @@
     font-family: 'poppins', sans-serif;
     scroll-behavior: smooth;
 }
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 7px;
+}
+::-webkit-scrollbar-thumb {
+    background: #5AC8DC;
+    height: 10px;
+    border-radius: 20px;
+}
+::-webkit-scrollbar-track {
+    background: #1D1E22;
+}

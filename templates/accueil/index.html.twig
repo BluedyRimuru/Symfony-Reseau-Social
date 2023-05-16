@@ -1,7 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Page d'accueil{% endblock %}
+{% block title %}Beltaria - Page d'accueil{% endblock %}
 
 {% block body %}
-
+<section class="section-accueil">
+    <div class="container-accueil">
+        <div class="content-accueil">
+            <img src="{{ asset('image/computer.png') }}" alt="computer_img" width="300">
+            <h1>Beltaria est un réseau social qui propose :</h1>
+            <ul>
+                <li>Contenu proposé : 1</li>
+                <li>Contenu proposé : 2</li>
+                <li>Contenu proposé : 3</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<style>
+    .section-accueil {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        background-image: url("{{ asset('image/accueil.png') }}");
+        background-size: cover;
+        height: calc(100vh - 64px);
+    }
+    .container-accueil {
+        padding: 100px;
+    }
+    .content-accueil {
+        padding: 20px;
+        background-color: #192040;
+        border-radius: 20px;
+    }
+</style>
 {% endblock %}
