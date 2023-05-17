@@ -3,19 +3,32 @@
 {% block title %}Beltaria - Page d'accueil{% endblock %}
 
 {% block body %}
-<section class="section-accueil">
-    <div class="container-accueil">
-        <div class="content-accueil">
-            <img src="{{ asset('image/png/computer.png') }}" alt="computer_img" width="300">
-            <h1>Beltaria est un réseau social qui propose :</h1>
-            <ul>
-                <li>Contenu proposé : 1</li>
-                <li>Contenu proposé : 2</li>
-                <li>Contenu proposé : 3</li>
-            </ul>
-        </div>
-    </div>
-</section>
+    {% if not app.user %}
+        <section class="section-accueil">
+            <div class="container-accueil">
+                <div class="content-accueil">
+                    <img src="{{ asset('image/png/computer.png') }}" alt="computer_img" width="300">
+                    <h1>Beltaria est un réseau social qui propose :</h1>
+                    <ul>
+                        <li>Contenu proposé : 1</li>
+                        <li>Contenu proposé : 2</li>
+                        <li>Contenu proposé : 3</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    {% else %}
+        <section class="section-accueil">
+            <div class="container-accueil">
+                <div class="content-accueil">
+                    Hi !ContenuContenuContenuContenuConten                    Hi !ContenuContenuContenuContenuContenuContenuContenuContenuContenuContenuContenuContenuContenuContenu
+                    Hi !ContenuContenuContenuContenuContenuContenuContenuContenuContenuContenuContenuContenuContenuContenu
+                    Hi !ContenuContenuContenuContenuContenuContenuContenuContenuContenuContenuContenuContenuContenuContenu
+                    uContenuContenuContenuContenuContenuContenuContenuContenuContenu
+                </div>
+            </div>
+        </section>
+    {% endif %}
 <style>
     .section-accueil {
         display: flex;
