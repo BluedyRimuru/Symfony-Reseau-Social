@@ -7,23 +7,46 @@
         </div>
         <div class="nav-item">
             {% if not app.user %}
-            <a href="{{ path('app_login') }}">Connexion</a>
-            <a href="{{ path('app_register') }}">Inscription</a>
-            <a href="">En savoir plus</a>
+                <a href="{{ path('app_login') }}">Connexion</a>
+                <a href="{{ path('app_register') }}">Inscription</a>
+                <a href="">En savoir plus</a>
             {% else %}
-                <a href="{{ path('app_logout') }}">Se déconnecter</a>
+{#                <a href="{{ path('app_logout') }}">Se déconnecter</a>#}
             {% endif %}
         </div>
         <div class="nav-item">
-            <a href="">
-                <img src="{{ asset('image/social/github_icon.png') }}" alt="github_icon" width="40">
-            </a>
-            <a href="">
-                <img src="{{ asset('image/social/twitter_icon.png') }}" alt="twitter_icon" width="40">
-            </a>
-            <a href="">
-                <img src="{{ asset('image/social/youtube_icon.png') }}" alt="youtube_icon" width="40">
-            </a>
+            {# Ajout des boutons de gestion lorsque connecté #}
+            {% if app.user %}
+                <a href="#">
+                    {# Page de personnalisation du compte #}
+                </a>
+                <a href="#">
+                    {# Changement du thème #}
+                </a>
+                <a href="{{ path('app_user_private_message') }}">
+                    <img class="img-1" src="{{ asset('image/png/pvm.png') }}" alt="Message Private" width="40">
+                </a>
+                {# Ajout d'une image plutôt que d'un champ de texte #}
+                <a href="{{ path('app_logout') }}">
+                    <img class="img-1" src="{{ asset('image/png/logout.png') }}" alt="Logout Button" width="40">
+                </a>
+                <style>
+                    {# Blanc #}
+                    .img-1 {
+                        filter: invert(100%);
+                        -webkit-filter: invert(100%);
+                    }
+                    {# Noir #}
+                    .img-2 {
+                        filter: sepia(100%);
+                        -webkit-filter: sepia(100%);
+                    }
+                </style>
+            {% else %}
+                <a href="https://github.com/BluedyRimuru" target="_blank">
+                    <img src="{{ asset('image/social/github_icon.png') }}" alt="github_icon" width="40">
+                </a>
+            {% endif %}
         </div>
     </div>
 </nav>
