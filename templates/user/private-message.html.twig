@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Beltaria - Message Privé{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('style/table.css') }}">
+{% endblock %}
 
 {% block body %}
 {#
@@ -9,5 +12,79 @@
     - Affiche les dernières conversations avec un utilisateur (5 dernières et classé par date)
     - Sur les conversations il faut : (Le dernier message, la date, le nombre de messages non lus, le pseudonyme)
 #}
+    <main class="main-content">
+        <div class="input-control">
+            <label for="search">
+                <img src="images/search.svg">
+            </label>
+            <input type="text" id="search" placeholder="Search for an user">
+        </div>
 
+        <h2 class="main-title">Database Results</h2>
+
+        <div class="table">
+            <h3 class="table-title">Id</h3>
+            <h3 class="table-title">Email</h3>
+            <h3 class="table-title">Pseudonyme</h3>
+        </div>
+
+        <div class="table-results">
+
+        </div>
+    </main>
+
+    <script>
+        const searchInput = document.querySelector("#search")
+        const searchResult = document.querySelector(".table-results")
+
+        let dataArray;
+
+        async function getUsers() {
+            dataArray = [];
+            {% for user in users %}
+                var currentUser = {
+                    id: {{ user.id }},
+                    email: "{{ user.email }}",
+                    pseudo: "{{ user.pseudo }}"
+                };
+                dataArray.push(currentUser);
+            {% endfor %}
+            // document.write(dataArray);
+            createUserList(dataArray);
+        }
+        getUsers();
+
+        function createUserList(data) {
+            data.forEach(user => {
+                const listItem = document.createElement("div");
+                listItem.setAttribute("class", "table-item");
+
+                listItem.innerHTML = `
+                    <div class="container-img">
+                    <p class="name">${user.id}</p>
+                    </div>
+                    <p class="email">${user.email}</p>
+                    <p class="phone">${user.pseudo}</p>
+                    `
+                searchResult.appendChild(listItem);
+                }
+            )
+        }
+
+        searchInput.addEventListener("input", filterData)
+
+        function filterData(e) {
+
+            searchResult.innerHTML = ""
+
+            const searchedString = e.target.value.toLowerCase().replace(/\s/g, "");
+
+            const filteredArr = dataArray.filter(el =>
+                el.pseudo.toLowerCase().includes(searchedString) ||
+                `${el.pseudo}`.toLowerCase().replace(/\s/g, "").includes(searchedString)
+            )
+
+            createUserList(filteredArr)
+        }
+    </script>
 {% endblock %}
