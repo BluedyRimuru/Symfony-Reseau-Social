@@ -6,9 +6,13 @@
             </a>
         </div>
         <div class="nav-item">
-            <a href="">Connexion</a>
-            <a href="">Inscription</a>
+            {% if not app.user %}
+            <a href="{{ path('app_login') }}">Connexion</a>
+            <a href="{{ path('app_register') }}">Inscription</a>
             <a href="">En savoir plus</a>
+            {% else %}
+                <a href="{{ path('app_logout') }}">Se déconnecter</a>
+            {% endif %}
         </div>
         <div class="nav-item">
             <a href="">
