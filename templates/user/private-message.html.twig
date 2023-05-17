@@ -81,7 +81,7 @@
 
             const filteredArr = dataArray.filter(el =>
                 el.pseudo.toLowerCase().includes(searchedString) ||
-                `${el.pseudo}`.toLowerCase().replace(/\s/g, "").includes(searchedString)
+                `${el.pseudo + el.email}`.toLowerCase().replace(/\s/g, "").includes(searchedString)
             )
 
             createUserList(filteredArr)
