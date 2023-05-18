@@ -21,4 +21,18 @@ class PrivateMessageController extends AbstractController
             'users' => $users,
         ]);
     }
+
+    #[Route('/message/{id}', name: 'app_user_private_message_id', methods: ['GET'])]
+    public function private(UserRepository $userRepository, int $id): Response
+    {
+        $idUser = $this->getUser()->getUserIdentifier();
+        $dataUser = $userRepository->findOneBy(["email" => $idUser]);
+
+        $user = $userRepository->findOneBy(["pseudo" => $id]);
+
+        return $this->render('user/private-message.html.twig', [
+            'user_main' => $dataUser,
+            'user_private' => $user
+        ]);
+    }
 }

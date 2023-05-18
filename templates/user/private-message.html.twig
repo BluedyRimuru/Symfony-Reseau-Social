@@ -26,6 +26,7 @@
             <h3 class="table-title">Id</h3>
             <h3 class="table-title">Email</h3>
             <h3 class="table-title">Pseudonyme</h3>
+            <h3 class="table-title">Messagerie</h3>
         </div>
 
         <div class="table-results">
@@ -65,8 +66,19 @@
                     </div>
                     <p class="email">${user.email}</p>
                     <p class="phone">${user.pseudo}</p>
+                    <a id="message-link-${user.id}" href="">Message</a>
                     `
+
                 searchResult.appendChild(listItem);
+
+                const actualId = user.id;
+                const test = 'message-link-'+actualId.toString();
+                const messageLink = document.getElementById('message-link-'+user.id);
+                console.log(messageLink)
+                var url = '{{ path("app_user_private_message_id", {'id': 'id'}) }}';
+
+                url = url.replace("id", user.id);
+                messageLink.setAttribute("href", url)
                 }
             )
         }
