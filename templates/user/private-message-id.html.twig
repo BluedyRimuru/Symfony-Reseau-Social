@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Beltaria - Message Privé{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('style/private-messages.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="chat-global">
+
+        <div class="nav-top">
+            <div class="location">
+                <img src="ressources/left-chevron.svg">
+                <p>Back</p>
+            </div>
+
+            <div class="utilisateur">
+                <p>{{ user_private.pseudo }}</p>
+                <p>Active Now 👁‍🗨</p>
+            </div>
+
+            <div class="logos-call">
+                <img src="ressources/phone.svg">
+                <img src="ressources/video-camera.svg">
+            </div>
+        </div>
+
+        <div class="conversation" style="overflow-y:auto;">
+            {#
+                - Si le message a été envoyé par un autre utilisateur :
+                <div class="talk left">
+                    <img src="{{ user_private.avatar ? }}">
+                    <p>{{ user_private.message.id }}</p>
+                </div>
+                - Sinon :
+                <div class="talk right">
+                    <p>{{ user_private.message.id }}</p>
+                    <img src="{{ user_private.avatar ? }}">
+                </div>
+
+                - Revoir le css pour l'ordre des messages
+            #}
+            <div class="talk left">
+                <img src="ressources/avatar2.jpg">
+                <p>Lorem ipsum dolor sit amet.</p>
+            </div>
+            <div class="talk right">
+                <p>Lorem ipsum dolorddzdzd sit amet.</p>
+                <img src="ressources/avatar1.jpg">
+            </div>
+        </div>
+
+        <form class="chat-form">
+
+            <div class="container-inputs-stuffs">
+
+                <div class="files-logo-cont">
+{#                    <img src="ressources/paperclip.svg">#}
+                    <p>🔗</p>
+                </div>
+
+                <div class="group-inp">
+                    <textarea placeholder="Enter your message here" minlength="1" maxlength="1500"></textarea>
+{#                    <img src="ressources/smile.svg">#}
+                    <p>😀</p>
+                </div>
+
+
+                <button class="submit-msg-btn">
+                    <p>📨</p>
+{#                    <img src="ressources/send.svg">#}
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+{% endblock %}

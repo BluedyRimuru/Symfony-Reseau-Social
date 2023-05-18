@@ -12,8 +12,9 @@ class PrivateMessageController extends AbstractController
     #[Route('/message', name: 'app_user_private_message')]
     public function index(UserRepository $userRepository): Response
     {
-        $idUser = $this->getUser()->getUserIdentifier();
-        $dataUser = $userRepository->findOneBy(["email" => $idUser]);
+//        A utiliser lorsque l'utilisateur aura son historique de messages
+//        $idUser = $this->getUser()->getUserIdentifier();
+//        $dataUser = $userRepository->findOneBy(["email" => $idUser]);
 
         $users = $userRepository->findAll();
 
@@ -28,9 +29,10 @@ class PrivateMessageController extends AbstractController
         $idUser = $this->getUser()->getUserIdentifier();
         $dataUser = $userRepository->findOneBy(["email" => $idUser]);
 
-        $user = $userRepository->findOneBy(["pseudo" => $id]);
+        $user = $userRepository->findOneBy(["id" => $id]);
+//        dd($user);
 
-        return $this->render('user/private-message.html.twig', [
+        return $this->render('user/private-message-id.html.twig', [
             'user_main' => $dataUser,
             'user_private' => $user
         ]);
